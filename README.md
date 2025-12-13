@@ -62,6 +62,7 @@ The robot is capable of **localization, mapping (SLAM), obstacle avoidance**, an
 ```bash
 ros2 launch motor_control kinematic.launch.py
 ros2 launch motor_control serial_brigde.launch.py
+ros2 launch ydlidar_ros2_driver ydlidar_launch.py
 ```
 
 ### Laptop
