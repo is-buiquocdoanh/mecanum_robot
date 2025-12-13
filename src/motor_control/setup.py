@@ -28,6 +28,7 @@ setup(
             # 'main_core1 = motor_control.main_core1:main',
             'ros_serial_bridge = motor_control.ros_serial_bridge:main',
             'kinematic_node = motor_control.kinematic:main',
+            'encoder_reader = motor_control.encoder_reader:main',
 
         ],
     },
