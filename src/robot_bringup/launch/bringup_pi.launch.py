@@ -38,23 +38,10 @@ def generate_launch_description():
         )
     )
 
-    # mapping
-    # cartographer_launch = IncludeLaunchDescription(
-    #     PythonLaunchDescriptionSource(
-    #         os.path.join(
-    #             get_package_share_directory('robot_mapping'),
-    #             'launch'
-    #             'cartographer.launch.py'
-    #         )
-    #     )
-    # )
-    
-
     return LaunchDescription([
         serial_bridge_launch,
         kinematic_launch,
         ydlidar_launch,
-        # cartographer_launch,
     ])
 
     # save map

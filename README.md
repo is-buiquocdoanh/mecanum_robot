@@ -19,10 +19,22 @@ The robot is capable of **localization, mapping (SLAM), obstacle avoidance**, an
 - **Motor Drivers (L298N or equivalent, 4 channels)**  
 - **12V Battery Pack**  
 - **Frame & chassis with Mecanum wheels**
-<img width="681" height="530" alt="image" src="https://github.com/user-attachments/assets/c54b0c0a-adef-460b-a354-27ee3970e993" />
-<img width="868" height="634" alt="image" src="https://github.com/user-attachments/assets/43cc7c46-d403-4e8a-826e-44fec91149fc" />
+<!-- Row 1: 1 image -->
+<p align="center">
+  <img src="docs/overview.png" width="60%">
+</p>
 
+<!-- Row 2: 2 images -->
+<p align="center">
+  <img src="docs/floor1.png" width="45%">
+  <img src="docs/floor2.png" width="45%">
+</p>
 
+<!-- Row 3: 2 images -->
+<p align="center">
+  <img src="docs/front.png" width="45%">
+  <img src="docs/right.png" width="45%">
+</p>
 
 ---
 
@@ -50,16 +62,15 @@ The robot is capable of **localization, mapping (SLAM), obstacle avoidance**, an
 ```bash
 ros2 launch motor_control kinematic.launch.py
 ros2 launch motor_control serial_brigde.launch.py
-ros2 launch rf2o_laser_odometry rf2o_laser_odometry
-ros2 launch robot_mapping cartographer.launch.py
-ros2 launch robot_navigation navigation.launch.py
 ```
 
 ### Laptop
 1. Install Ubuntu and ROS 2.
  ```bash
 ros2 launch mecanum_joy mecanum_joy.launch.py
-rviz2
+ros2 launch rf2o_laser_odometry rf2o_laser_odometry
+ros2 launch robot_mapping cartographer.launch.py
+ros2 launch robot_navigation navigation.launch.py
 ```
 ## Result
 - Mapping: https://youtu.be/SoL5KJzKNMY
