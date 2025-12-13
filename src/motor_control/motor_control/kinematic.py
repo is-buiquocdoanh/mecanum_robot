@@ -33,7 +33,7 @@ class ControlMotorByKinematic(LifecycleNode):
                 ('ly', 0.11),
                 ('pwm_max', 255),
                 ('pwm_min', 0),
-                ('rpm_max', 60)
+                ('rpm_max', 130)
             ]
         )
         

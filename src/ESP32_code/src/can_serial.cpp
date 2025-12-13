@@ -69,31 +69,3 @@ bool CanSerial::readPacket(DataPacket &packet) {
 
     return false;
 }
-
-// bool CanSerial::readPacket(DataPacket &packet) {
-//     if (_serial->available()) {
-//         uint8_t data = _serial->read();
-
-//         Serial.println(data);
-
-//         if (_rxIndex == 0) {
-//             if (data == 0x2a) {
-//                 _rxBuffer[_rxIndex++] = data;
-//             }
-//         } else {
-//             _rxBuffer[_rxIndex++] = data;
-
-//             if (_rxIndex == 14) {
-//                 _rxIndex = 0;
-
-//                 if (_rxBuffer[13] == 0x23) {
-//                     memcpy(&packet.id, _rxBuffer + 1, 4);
-//                     memcpy(packet.data, _rxBuffer + 5, 8);
-//                     return true;
-//                 }
-//             }
-//         }
-//     }
-
-//     return false;
-// }

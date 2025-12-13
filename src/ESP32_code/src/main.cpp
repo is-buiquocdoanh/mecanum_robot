@@ -2,29 +2,31 @@
 #include "can_serial.h"
 #include "driver/pcnt.h"
 
-#define ENC_LEFT_FRONT_A 5
-#define ENC_LEFT_FRONT_B 22
+#define ENC_LEFT_FRONT_A 22
+#define ENC_LEFT_FRONT_B 23
 
-const int pwm_left_front_pin1 = 25;
-const int pwm_left_front_pin2 = 26;
+const int pwm_left_front_pin1 = 19;
+const int pwm_left_front_pin2 = 21; 
 
-#define ENC_RIGHT_FRONT_A 4
-#define ENC_RIGHT_FRONT_B 21
+#define ENC_RIGHT_FRONT_A 17
+#define ENC_RIGHT_FRONT_B 5
 
-const int pwm_right_front_pin1 = 32;
-const int pwm_right_front_pin2 = 33;
+const int pwm_right_front_pin1 = 18;
+const int pwm_right_front_pin2 = 13;
 
-#define ENC_LEFT_BACK_A 19
+#define ENC_LEFT_BACK_A 34
 #define ENC_LEFT_BACK_B 35
 
-const int pwm_left_back_pin1 = 12;
-const int pwm_left_back_pin2 = 13;
+const int pwm_left_back_pin1 = 32;
+const int pwm_left_back_pin2 = 33;
 
-#define ENC_RIGHT_BACK_A 18
-#define ENC_RIGHT_BACK_B 23
+#define ENC_RIGHT_BACK_A 25
+#define ENC_RIGHT_BACK_B 26
 
 const int pwm_right_back_pin1 = 27;
 const int pwm_right_back_pin2 = 14;
+
+// Cần phải điều chỉnh lại pin enc, pwm để phù hợp với phần cứng sử dụng
 
 // #define RXD2 16
 // #define TXD2 17
@@ -415,6 +417,33 @@ void loop() {
     pcnt_get_counter_value(PCNT_UNIT_1, &tickRightFront);
     pcnt_get_counter_value(PCNT_UNIT_2, &tickLeftBack);
     pcnt_get_counter_value(PCNT_UNIT_3, &tickRightBack);
+
+
+    // ----- GỬI ENCODER VỀ ROS2 -----
+    // DataPacket sendPacket;
+
+    // // ID 4 byte
+    // sendPacket.id = 1;  // 1 = encoder frame
+
+    // sendPacket.data[0] = (tickLeftFront >> 8) & 0xFF;
+    // sendPacket.data[1] = tickLeftFront & 0xFF;
+
+    // sendPacket.data[2] = (tickRightFront >> 8) & 0xFF;
+    // sendPacket.data[3] = tickRightFront & 0xFF;
+
+    // sendPacket.data[4] = (tickLeftBack >> 8) & 0xFF;
+    // sendPacket.data[5] = tickLeftBack & 0xFF;
+
+    // sendPacket.data[6] = (tickRightBack >> 8) & 0xFF;
+    // sendPacket.data[7] = tickRightBack & 0xFF;
+
+    // // Gửi đi
+    // CSerial.sendPacket(sendPacket);
+
+    // // Debug
+    // Serial.printf("[TX] LF=%d RF=%d LB=%d RB=%d\n",
+    //           tickLeftFront, tickRightFront, tickLeftBack, tickRightBack);
+
 
     // Record the time
     currentMillis = millis();
