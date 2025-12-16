@@ -13,7 +13,7 @@ ydlidar_ros2_driver_node:
     abnormal_check_count: 4
     fixed_resolution: true
     reversion: false
-    inverted: false
+    inverted: true
     auto_reconnect: true
     support_motor_dtr: true
     angle_max: 180.0
