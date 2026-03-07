@@ -6,7 +6,7 @@ from ament_index_python.packages import get_package_share_directory
 def generate_launch_description():
 
     package_dir = get_package_share_directory('robot_navigation')
-    map_file = os.path.join(package_dir, 'map', 'map.yaml')
+    map_file = os.path.join(package_dir, 'map', 'map3.yaml')
     params_file = os.path.join(package_dir, 'param', 'nav2_params.yaml')
     rviz_config = os.path.join(package_dir, 'rviz', 'nav2_default_view.rviz')
 

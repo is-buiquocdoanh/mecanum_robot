@@ -33,7 +33,9 @@ class ControlMotorByKinematic(LifecycleNode):
                 ('ly', 0.11),
                 ('pwm_max', 255),
                 ('pwm_min', 0),
-                ('rpm_max', 130)
+                ('rpm_max', 130),
+                # hệ số nhân cho vận tốc góc (dùng để tăng tốc quay tại chỗ)
+                ('omega_scale', 3.5)
             ]
         )
         
@@ -47,6 +49,8 @@ class ControlMotorByKinematic(LifecycleNode):
         self.pwm_max = self.get_parameter('pwm_max').get_parameter_value().integer_value
         self.pwm_min = self.get_parameter('pwm_min').get_parameter_value().integer_value
         self.rpm_max= self.get_parameter('rpm_max').get_parameter_value().integer_value
+        # hệ số nhân cho omega (angular.z) trước khi tính kinematics
+        self.omega_scale = self.get_parameter('omega_scale').get_parameter_value().double_value
 
         # Đăng ký callback để nhận lệnh vận tốc từ topic /cmd_vel
         self.subscription = self.create_subscription(Twist, '/cmd_vel', self.cmdVel_callback,10)
@@ -85,7 +89,8 @@ class ControlMotorByKinematic(LifecycleNode):
             [1,  1, -k],
             [1, -1,  k]
         ])
-        V = np.array([vel.linear.x, vel.linear.y, vel.angular.z])
+        # Nếu muốn tăng tốc quay tại chỗ, nhân hệ số vào vận tốc góc
+        V = np.array([vel.linear.x, vel.linear.y, self.omega_scale * vel.angular.z])
         
         # Tính tốc độ góc (rad/s)
         w_rad = (1 / self.r_banh) * M @ V
